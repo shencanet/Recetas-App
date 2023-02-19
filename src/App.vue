@@ -1,15 +1,21 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+
 import HelloWorld from './components/HelloWorld.vue'
 import axios from 'axios';
+import Category from './components/Category.vue'
 </script>
 
 <template>
-<hr />
-<div v-for="category in categories" :key="category.idCategory">
-<img v-bind:src="category.strCategoryThumb">
-<h6>{{category.strCategory}}</h6>
-</div>
+<HelloWorld msg="Api Restauracion || Santi Dionis" />
+
+
+<Category 
+v-for="category in categories"  
+v-bind:key="category.idCategory" 
+v-bind:category="category" 
+/>
+
+
 
 
 </template>
@@ -17,6 +23,9 @@ import axios from 'axios';
 <script>
 export default {
   name: 'App',
+  components:{
+    Category,
+  },
   data(){
     return {
       categories: []
@@ -26,8 +35,7 @@ export default {
     axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
     .then((res) => {
       console.log(res.data.categories);
-      //
-      //strCategory
+      
 
 
 
@@ -78,6 +86,14 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
+.category_container{
+    border: 1px solid green;
+    padding: 50px;
+    border-radius: 50px;
+   margin-top: 25px;
+  
+
+  }
 
 @media (min-width: 1024px) {
   header {
@@ -104,5 +120,6 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+ 
 }
 </style>
