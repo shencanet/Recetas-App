@@ -1,24 +1,47 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+<hr />
+<div v-for="category in categories" :key="category.idCategory">
+<img v-bind:src="category.strCategoryThumb">
+<h6>{{category.strCategory}}</h6>
+</div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data(){
+    return {
+      categories: []
+
+    };
+  }, mounted(){
+    axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
+    .then((res) => {
+      console.log(res.data.categories);
+      //
+      //strCategory
+
+
+
+      this.categories = res.data.categories;
+
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+}
+</script>
+
 
 <style scoped>
 header {
