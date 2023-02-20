@@ -9,17 +9,16 @@ defineProps({
 
 <template>
   <div class="greetings">
-    <h2 class="green">{{ msg }}</h2>
+    <h3 class="green">{{ msg }}</h3>
   
   </div>
 </template>
 
 <style scoped>
-h2 {
-  font-weight: 400;
-  font-size: 2rem;
-  margin-top: 25px;
-  top: 5px;
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  top: -10px;
 }
 
 h3 {
@@ -31,7 +30,7 @@ h3 {
 .greetings h1,
 .greetings h3 {
   text-align: center;
-  margin-left: 300px;
+  margin-left: 30px;
   
 
   

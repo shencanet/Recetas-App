@@ -6,28 +6,22 @@ import Meal from './components/Meal.vue'
 import Category from './components/Category.vue'
 </script>
 
-<template>
-  <div class="shen">
-  <HelloWorld msg="Api Restauracion || Santi Dionis" />
-  <h3>Buscador Recetas</h3>
-  <input type="text" v-model="search" v-on:keyup.enter="searchData" placeholder="Buscador Aqui ">
-  <Meal 
-  v-for="meal in meals" 
-  v-bind:key="meal.idMeal" 
-  dv-bind:meal="meal" />
+<template >
+
+<h3>"Api Restauracion || Santi Dionis"</h3><br /><br/>
+
+    <h3>Buscador Recetas</h3>
+    <input type="text" v-model="search" v-on:keyup.enter="searchData" placeholder="Buscador Aqui ">
+    <Meal v-for="meal in meals" v-bind:key="meal.idMeal" dv-bind:meal="meal" />
 
 
-  <div class="text-center">
-    ...
-  </div>
-  <h3>. Busca por categoria</h3>
-</div>
-  
-  <Category 
-  v-for="category in categories" 
-  v-bind:key="category.idCategory" 
-  v-bind:category="category" 
-  />
+    <div class="text-center">
+      ...
+    </div>
+    <h3>. Busca por categoria</h3>
+ 
+
+  <Category v-for="category in categories" v-bind:key="category.idCategory" v-bind:category="category" />
 </template>
 
 <script>
@@ -35,7 +29,7 @@ export default {
   name: 'App',
   components: {
     Category,
-    
+
   },
   data() {
     return {
@@ -65,8 +59,8 @@ export default {
   },
 
   computed: {
-    indexStart(){
-      return (this.current -1)
+    indexStart() {
+      return (this.current - 1)
     }
   },
 
@@ -101,23 +95,28 @@ export default {
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+
 }
-.text-center{
-  border: 2px solid red;
+
+
+h3{
+  margin-top: 30px;
+ 
+
+ 
+  max-width: 1600px;
+ 
+  
+  
+  
 }
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+input{
+  text-align: center;
+  font-size: 30px;
 }
-.shen{
-  border: 2px solid red;
-  width: 100%
-  ;
-}
+
 nav {
-  border: 1px solid blue;
-  width: 100%;
+ 
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
@@ -137,8 +136,10 @@ nav a {
   border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a {
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
 }
 
 .category_container {
@@ -149,26 +150,32 @@ nav a:first-of-type {
   margin-left: 20px;
 
 
+
+
 }
 
 @media (min-width: 1024px) {
   header {
+    
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
+    
     margin: 0 2rem 0 0;
   }
 
   header .wrapper {
+    
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
   }
 
   nav {
+    
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
