@@ -13,9 +13,17 @@ import Category from './components/Category.vue'
   <Meal 
   v-for="meal in meals" 
   v-bind:key="meal.idMeal" 
-  v-bind:meal="meal" />
+  dv-bind:meal="meal" />
 
-  <Category v-for="category in categories" v-bind:key="category.idCategory" v-bind:category="category" />
+
+  <div class="text-center"> 
+  <h3>. Busca por categoria</h3></div>
+  
+  <Category 
+  v-for="category in categories" 
+  v-bind:key="category.idCategory" 
+  v-bind:category="category" 
+  />
 </template>
 
 <script>
@@ -29,7 +37,10 @@ export default {
     return {
       categories: [],
       meals: [],
-      search: null
+      search: null,
+      //Paginacion
+      current: 1,
+      pageSize: 5,
 
     };
   }, mounted() {
@@ -48,6 +59,16 @@ export default {
         console.log(err)
       })
   },
+
+  computed: {
+    indexStart(){
+      return (this.current -1)
+    }
+  },
+
+
+
+
   methods: {
     searchData() {
       if (this.search) {
@@ -114,6 +135,7 @@ nav a:first-of-type {
   padding: 50px;
   border-radius: 50px;
   margin-top: 25px;
+  margin-left: 20px;
 
 
 }
