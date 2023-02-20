@@ -7,8 +7,9 @@ import Category from './components/Category.vue'
 </script>
 
 <template>
+  <div class="shen">
   <HelloWorld msg="Api Restauracion || Santi Dionis" />
-  <h1>Buscador Recetas</h1>
+  <h3>Buscador Recetas</h3>
   <input type="text" v-model="search" v-on:keyup.enter="searchData" placeholder="Buscador Aqui ">
   <Meal 
   v-for="meal in meals" 
@@ -16,8 +17,11 @@ import Category from './components/Category.vue'
   dv-bind:meal="meal" />
 
 
-  <div class="text-center"> 
-  <h3>. Busca por categoria</h3></div>
+  <div class="text-center">
+    ...
+  </div>
+  <h3>. Busca por categoria</h3>
+</div>
   
   <Category 
   v-for="category in categories" 
@@ -99,13 +103,20 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
+.text-center{
+  border: 2px solid red;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
 }
-
+.shen{
+  border: 2px solid red;
+  width: 100%
+  ;
+}
 nav {
+  border: 1px solid blue;
   width: 100%;
   font-size: 12px;
   text-align: center;
@@ -134,7 +145,7 @@ nav a:first-of-type {
   border: 1px solid green;
   padding: 50px;
   border-radius: 50px;
-  margin-top: 25px;
+  margin-top: 50px;
   margin-left: 20px;
 
 
