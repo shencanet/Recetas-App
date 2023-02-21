@@ -21,14 +21,28 @@ import Category from './components/Category.vue'
     v-bind:key="meal.idMeal" 
     v-bind:meal="meal"/>
 
-
+  <div class="text-center">
+    ...
+  </div>
+  <h3>o Busca por categoria</h3>
    
  
 
   <Category 
-  v-for="category in categories" 
+  v-for="category in paginated" 
   v-bind:key="category.idCategory" 
   v-bind:category="category" />
+
+ 
+
+  <div class="text-center">
+    <a @click="prev()">Anterior</a>
+    -----------------------------------------------------------
+    <a @click="next()">Siguiente</a>
+   
+  </div>
+
+
 </template>
 
 <script>
@@ -36,6 +50,7 @@ export default {
   name: 'App',
   components: {
     Category,
+    Meal,
 
   },
   data() {
@@ -43,9 +58,8 @@ export default {
       categories: [],
       meals: [],
       search: null,
-      //Paginacion
       current: 1,
-      pageSize: 5,
+      pageSize: 6,
 
     };
   }, mounted() {
@@ -67,7 +81,15 @@ export default {
 
   computed: {
     indexStart() {
-      return (this.current - 1)
+      return (this.current -1) * this.pageSize;
+
+    },
+    indexEnd(){
+      return this.indexStart + this.pageSize;
+
+    },
+    paginated(){
+      return this.categories.slice(this.indexStart, this.indexEnd)
     }
   },
 
@@ -76,7 +98,7 @@ export default {
 
   methods: {
     searchData() {
-      alert('aqui shen')
+      //alert('aqui shen')
       if (this.search) {
         axios.get('https://www.themealdb.com/api/json/v1/1/search.php?s=' + this.search)
           .then((res) => {
@@ -94,6 +116,12 @@ export default {
       }
 
 
+    },
+    prev(){
+      this.current--;
+    },
+    next(){
+      this.current++;
     }
   }
 }
