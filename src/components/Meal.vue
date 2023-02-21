@@ -12,4 +12,4 @@
 export default {
     props: ["meal"]
 }
-
+</script>
