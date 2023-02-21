@@ -1,5 +1,5 @@
 <script setup>
-
+import swal from 'sweetalert';
 import HelloWorld from './components/HelloWorld.vue'
 import axios from 'axios';
 import Meal from './components/Meal.vue'
@@ -14,7 +14,8 @@ import Category from './components/Category.vue'
     <input type="text" 
     v-model="search" 
     v-on:keyup.enter="searchData" 
-    placeholder="Buscador Aqui " />
+    placeholder="Buscador Aqui "
+    class="search-input" />
 
     <Meal 
     v-for="meal in meals" 
@@ -112,7 +113,13 @@ export default {
             console.log(err)
           })
       } else {
-        alert('Ingresa un texto')
+
+        swal({
+            title: "Ingresa un texto",
+            text: "Atencion",
+            icon: "error",
+        });
+        
       }
 
 
@@ -128,68 +135,41 @@ export default {
 </script>
 
 
-<style scoped>
-header {
-  line-height: 1.5;
-
-}
+<style>
 
 
-h3{
-  margin-top: 30px;
- 
 
- 
-  max-width: 1600px;
- 
-  
-  
-  
-}
-input{
+#app{
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
   text-align: center;
-  font-size: 30px;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-
-nav {
- 
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
 .category_container {
   border: 1px solid green;
   padding: 50px;
-  border-radius: 50px;
-  margin-top: 50px;
-  margin-left: 20px;
+  border-radius: 25px;
+
 
 
 
 
 }
+.search-input{
+  border: none;
+  border-bottom: 1px solid rgb(190, 149, 27);
+  min-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
+
+  
+
+}
+*{
+  font-family: monospace;
+}
 @media (min-width: 1024px) {
   header {
     
