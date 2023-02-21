@@ -8,20 +8,27 @@ import Category from './components/Category.vue'
 
 <template >
 
-<h3>"Api Restauracion || Santi Dionis"</h3><br /><br/>
+<h3>"Api Restauracion || Santi Dionis"</h3><br />
 
     <h3>Buscador Recetas</h3>
-    <input type="text" v-model="search" v-on:keyup.enter="searchData" placeholder="Buscador Aqui ">
-    <Meal v-for="meal in meals" v-bind:key="meal.idMeal" dv-bind:meal="meal" />
+    <input type="text" 
+    v-model="search" 
+    v-on:keyup.enter="searchData" 
+    placeholder="Buscador Aqui " />
+
+    <Meal 
+    v-for="meal in meals" 
+    v-bind:key="meal.idMeal" 
+    v-bind:meal="meal"/>
 
 
-    <div class="text-center">
-      ...
-    </div>
-    <h3>. Busca por categoria</h3>
+   
  
 
-  <Category v-for="category in categories" v-bind:key="category.idCategory" v-bind:category="category" />
+  <Category 
+  v-for="category in categories" 
+  v-bind:key="category.idCategory" 
+  v-bind:category="category" />
 </template>
 
 <script>
@@ -69,6 +76,7 @@ export default {
 
   methods: {
     searchData() {
+      alert('aqui shen')
       if (this.search) {
         axios.get('https://www.themealdb.com/api/json/v1/1/search.php?s=' + this.search)
           .then((res) => {
